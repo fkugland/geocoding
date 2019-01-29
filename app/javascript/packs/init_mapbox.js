@@ -12,9 +12,17 @@ const initMapbox = () => {
 
   const addMarkersToMap = (map, markers) => {
     markers.forEach((marker) => {
+      const element = document.createElement('div');
+      element.className = 'marker';
+      element.style.backgroundImage = `url('${marker.image_url}')`;
+      element.style.backgroundSize = 'contain';
+      element.style.backgroundRepeat = 'no-repeat';
+      element.style.width = '20px';
+      element.style.height = '25px';
+
       const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
-      new mapboxgl.Marker()
+      new mapboxgl.Marker(element)
       .setLngLat([marker.lng, marker.lat])
       .setPopup(new mapboxgl.Popup({offset: 25})
         .setHTML(marker.infoWindow))

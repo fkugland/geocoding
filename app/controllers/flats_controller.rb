@@ -10,7 +10,8 @@ class FlatsController < ApplicationController
       {
         lng: flat.longitude,
         lat: flat.latitude,
-        infoWindow: render_to_string(partial: '/flats/info_window', locals: { flat: flat })
+        infoWindow: render_to_string(partial: '/flats/info_window', locals: { flat: flat }),
+        image_url: helpers.asset_url('red_pin.png')
       }
     end
   end
